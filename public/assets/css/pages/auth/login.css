@@ -1,0 +1,495 @@
+.is-guest {
+  background: #512c16;
+}
+
+.guest-shell .main-content {
+  min-height: 100vh;
+}
+
+.samaraa-login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: clamp(18px, 4vw, 48px);
+  background:
+    radial-gradient(
+      circle at 16% 15%,
+      rgba(248, 214, 106, 0.13),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 86% 84%,
+      rgba(179, 142, 115, 0.16),
+      transparent 23%
+    ),
+    linear-gradient(135deg, #48250f 0%, #613817 46%, #43210e 100%);
+}
+
+.samaraa-login__shell {
+  direction: ltr;
+  width: min(1070px, 100%);
+  min-height: 618px;
+  display: grid;
+  grid-template-columns: 39% 61%;
+  overflow: hidden;
+  border-radius: 23px;
+  background: #ffffff;
+  box-shadow:
+    0 38px 82px rgba(28, 13, 5, 0.34),
+    0 4px 14px rgba(28, 13, 5, 0.15);
+}
+
+/* ==========================================================
+   الجزء الزخرفي الأيسر
+   ========================================================== */
+
+.samaraa-login__art {
+  direction: rtl;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 618px;
+  padding: 35px 31px;
+  background: linear-gradient(145deg, #c09d84 0%, #ddc8ba 48%, #b38e73 100%);
+}
+
+.samaraa-login__art::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    radial-gradient(circle at 13% 86%, rgba(97, 56, 23, 0.18), transparent 25%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06), transparent 42%);
+}
+
+.samaraa-login__art-lines {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.samaraa-login__art-line {
+  position: absolute;
+  display: block;
+  transform-origin: center;
+}
+
+.samaraa-login__art-line--top {
+  width: 460px;
+  height: 73px;
+  inset-inline-start: -154px;
+  top: 101px;
+  transform: rotate(-45deg);
+  background: rgba(97, 56, 23, 0.3);
+  box-shadow:
+    0 0 0 19px rgba(248, 214, 106, 0.09),
+    0 0 0 39px rgba(97, 56, 23, 0.11);
+}
+
+.samaraa-login__art-line--bottom {
+  width: 530px;
+  height: 76px;
+  inset-inline-start: -115px;
+  bottom: 109px;
+  transform: rotate(45deg);
+  background: rgba(97, 56, 23, 0.28);
+  box-shadow:
+    0 0 0 17px rgba(248, 214, 106, 0.09),
+    0 0 0 38px rgba(97, 56, 23, 0.1);
+}
+
+.samaraa-login__art-line--gold {
+  width: 392px;
+  height: 2px;
+  inset-inline-start: -80px;
+  bottom: 159px;
+  transform: rotate(45deg);
+  background: rgba(248, 214, 106, 0.64);
+}
+
+.samaraa-login__art-brand {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--samaraa-brown);
+}
+
+.samaraa-login__art-brand-mark {
+  width: 45px;
+  height: 45px;
+  border: 1px solid rgba(97, 56, 23, 0.26);
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: var(--samaraa-brown);
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.samaraa-login__art-brand strong {
+  display: block;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.samaraa-login__art-brand small {
+  display: block;
+  margin-top: 3px;
+  color: rgba(97, 56, 23, 0.72);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.samaraa-login__art-footer {
+  position: absolute;
+  z-index: 3;
+  inset-inline: 31px;
+  bottom: 34px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: rgba(97, 56, 23, 0.75);
+}
+
+.samaraa-login__art-footer span {
+  width: 33px;
+  height: 1px;
+  background: rgba(97, 56, 23, 0.3);
+}
+
+.samaraa-login__art-footer small {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* ==========================================================
+   جهة نموذج الدخول
+   ========================================================== */
+
+.samaraa-login__panel {
+  direction: rtl;
+  display: grid;
+  place-items: center;
+  padding: 38px 54px;
+  background: #ffffff;
+}
+
+.samaraa-login__form-content {
+  width: min(385px, 100%);
+}
+
+.samaraa-login__header {
+  text-align: center;
+  margin-bottom: 41px;
+}
+
+.samaraa-login__avatar {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 19px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background:
+    radial-gradient(
+      circle at 35% 26%,
+      rgba(248, 214, 106, 0.45),
+      transparent 25%
+    ),
+    linear-gradient(145deg, #b38e73 0%, #613817 100%);
+  box-shadow:
+    0 12px 21px rgba(97, 56, 23, 0.23),
+    0 3px 4px rgba(97, 56, 23, 0.14);
+}
+
+.samaraa-login__avatar svg {
+  width: 42px;
+  height: 42px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.samaraa-login__brand-name {
+  margin: 0 0 7px;
+  color: var(--samaraa-beige);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.samaraa-login__title {
+  margin: 0;
+  color: var(--samaraa-brown);
+  font-size: 35px;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+.samaraa-login__description {
+  margin: 10px 0 0;
+  color: var(--samaraa-muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.samaraa-login__alert {
+  margin-bottom: 19px;
+  padding: 12px 14px;
+  border: 1px solid rgba(180, 35, 24, 0.17);
+  border-radius: 10px;
+  color: var(--samaraa-danger);
+  background: #fff8f7;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.samaraa-login__form {
+  display: grid;
+  gap: 24px;
+}
+
+.samaraa-login__form .ui-field__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.samaraa-login__form .ui-field {
+  position: relative;
+  gap: 6px;
+}
+
+.samaraa-login__form .ui-field__control {
+  position: relative;
+  min-height: 55px;
+  border-bottom: 1px solid #d4c7be;
+}
+
+.samaraa-login__form .ui-field__control::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--samaraa-brown);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.2s ease;
+}
+
+.samaraa-login__form .ui-field__control:focus-within::after {
+  transform: scaleX(1);
+}
+
+.samaraa-login__form .ui-field__icon {
+  inset-inline-start: 4px;
+  width: 21px;
+  height: 21px;
+  color: #a6968a;
+}
+
+.samaraa-login__form .ui-field__input {
+  min-height: 54px;
+  padding: 11px 40px 10px 7px;
+  border: 0;
+  border-radius: 0;
+  color: var(--samaraa-text);
+  background: transparent;
+  box-shadow: none;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.samaraa-login__form .ui-field__input::placeholder {
+  color: #9f948d;
+  opacity: 1;
+}
+
+.samaraa-login__form .ui-field__input:focus {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.samaraa-login__form .ui-field__control.is-invalid {
+  border-bottom-color: rgba(180, 35, 24, 0.52);
+}
+
+.samaraa-login__form .ui-field__control.is-invalid::after {
+  background: var(--samaraa-danger);
+  transform: scaleX(1);
+}
+
+.samaraa-login__form .ui-field__error {
+  margin-top: 5px;
+  color: var(--samaraa-danger);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.samaraa-login__form input:-webkit-autofill,
+.samaraa-login__form input:-webkit-autofill:hover,
+.samaraa-login__form input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--samaraa-text);
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+  transition: background-color 999999s ease-in-out 0s;
+}
+
+.samaraa-login__secondary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: -5px;
+}
+
+.samaraa-login__remember {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--samaraa-muted);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.samaraa-login__remember input {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  border: 1px solid #d8cbc2;
+  border-radius: 4px;
+  background: #ffffff;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.samaraa-login__remember input:checked {
+  border-color: var(--samaraa-brown);
+  background: var(--samaraa-brown);
+  box-shadow: inset 0 0 0 4px #ffffff;
+}
+
+.samaraa-login__role {
+  color: var(--samaraa-beige);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.samaraa-login__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 13px;
+  margin-top: 3px;
+}
+
+.samaraa-login__secure {
+  color: var(--samaraa-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.samaraa-login__actions .ui-button {
+  width: 126px;
+  min-height: 43px;
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.samaraa-login__actions .ui-button--primary {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    var(--samaraa-beige),
+    var(--samaraa-brown)
+  );
+  box-shadow: 0 11px 18px rgba(97, 56, 23, 0.21);
+}
+
+.samaraa-login__actions .ui-button--primary:hover {
+  box-shadow: 0 15px 23px rgba(97, 56, 23, 0.28);
+}
+
+.samaraa-login__footer {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 48px;
+}
+
+.samaraa-login__footer span {
+  height: 1px;
+  flex: 1;
+  background: #eee5de;
+}
+
+.samaraa-login__footer p {
+  margin: 0;
+  color: #a49285;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ==========================================================
+   التجاوب مع الشاشات
+   ========================================================== */
+
+@media (max-width: 950px) {
+  .samaraa-login__shell {
+    width: min(540px, 100%);
+    min-height: auto;
+    display: block;
+  }
+
+  .samaraa-login__art {
+    display: none;
+  }
+
+  .samaraa-login__panel {
+    min-height: 620px;
+    padding: 42px 38px;
+  }
+}
+
+@media (max-width: 560px) {
+  .samaraa-login {
+    padding: 15px;
+  }
+
+  .samaraa-login__shell {
+    border-radius: 19px;
+  }
+
+  .samaraa-login__panel {
+    min-height: calc(100vh - 30px);
+    padding: 32px 23px;
+  }
+
+  .samaraa-login__header {
+    margin-bottom: 34px;
+  }
+
+  .samaraa-login__title {
+    font-size: 31px;
+  }
+
+  .samaraa-login__footer {
+    margin-top: 39px;
+  }
+}

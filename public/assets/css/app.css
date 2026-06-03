@@ -65,7 +65,11 @@ button {
 
 .is-authenticated {
   background:
-    radial-gradient(circle at 2% 4%, rgba(248, 214, 106, 0.13), transparent 22%),
+    radial-gradient(
+      circle at 2% 4%,
+      rgba(248, 214, 106, 0.13),
+      transparent 22%
+    ),
     linear-gradient(135deg, #f8f4ef 0%, #fbf9f6 100%);
 }
 
@@ -96,7 +100,11 @@ button {
   padding: 25px 16px 18px;
   color: #ffffff;
   background:
-    radial-gradient(circle at 22% 88%, rgba(248, 214, 106, 0.18), transparent 23%),
+    radial-gradient(
+      circle at 22% 88%,
+      rgba(248, 214, 106, 0.18),
+      transparent 23%
+    ),
     linear-gradient(180deg, #613817 0%, #522d16 100%);
 }
 
@@ -495,7 +503,11 @@ button {
   margin-bottom: 18px;
   padding: 25px 28px;
   background:
-    radial-gradient(circle at 10% 12%, rgba(248, 214, 106, 0.18), transparent 25%),
+    radial-gradient(
+      circle at 10% 12%,
+      rgba(248, 214, 106, 0.18),
+      transparent 25%
+    ),
     linear-gradient(120deg, #ffffff 0%, #fffdfa 100%);
 }
 
@@ -1218,5 +1230,240 @@ nav[role="navigation"] {
 
   .toolbar input {
     min-width: 0;
+  }
+}
+
+/* ==========================================================
+   استيراد الموظفين من Excel
+   ========================================================== */
+
+.page-head__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.import-layout {
+  display: grid;
+  grid-template-columns: minmax(420px, 1.15fr) minmax(310px, 0.85fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.import-panel__head {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 21px;
+}
+
+.import-panel__badge {
+  width: 55px;
+  height: 55px;
+  flex: 0 0 55px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: linear-gradient(135deg, #3b7d4a, #225c31);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.import-panel__head h3 {
+  margin: 0 0 3px;
+  color: var(--text);
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.import-panel__head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.import-form {
+  display: grid;
+  gap: 16px;
+}
+
+.import-dropzone {
+  min-height: 230px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 10px;
+  padding: 28px;
+  border: 2px dashed #dfcfc2;
+  border-radius: 18px;
+  color: var(--primary);
+  background: #fcfaf7;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+
+.import-dropzone:hover {
+  border-color: var(--secondary);
+  background: #fffdf8;
+}
+
+.import-dropzone input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.import-dropzone__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: #23713c;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.import-dropzone strong {
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.import-dropzone small {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.import-error {
+  margin: 0;
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.import-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 21px;
+}
+
+.import-fields span {
+  min-height: 35px;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 13px;
+  border-radius: 999px;
+  color: var(--primary);
+  background: var(--gold-soft);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.import-note {
+  padding: 16px;
+  border: 1px solid var(--border-soft);
+  border-radius: 15px;
+  background: var(--bg-secondary);
+}
+
+.import-note strong {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.import-note p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.85;
+  font-weight: 600;
+}
+
+@media (max-width: 920px) {
+  .import-layout {
+    grid-template-columns: 1fr;
+  }
+}
+/* ==========================================================
+   Pagination
+   ========================================================== */
+
+.pagination-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+  direction: rtl;
+}
+
+.pagination-summary {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.pagination-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pagination-item {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.pagination-item:hover {
+  background: var(--gold-soft);
+}
+
+.pagination-item.is-active {
+  color: #ffffff;
+  border-color: var(--primary);
+  background: var(--primary);
+}
+
+.pagination-item.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background: var(--bg-secondary);
+}
+
+@media (max-width: 620px) {
+  .pagination-wrap {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .pagination-links {
+    justify-content: flex-start;
   }
 }

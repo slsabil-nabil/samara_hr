@@ -24,6 +24,11 @@ Route::middleware('auth')->group(function (): void {
     Route::redirect('/', '/dashboard');
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
+    Route::get('/employees/import', [EmployeeController::class, 'importForm'])
+        ->name('employees.import.form');
+    Route::post('/employees/import', [EmployeeController::class, 'import'])
+        ->name('employees.import.store');
+
     Route::resource('employees', EmployeeController::class)->except('show');
     Route::resource('leaves', LeaveRequestController::class)->except('show');
     Route::resource('loans', LoanController::class)->except('show');

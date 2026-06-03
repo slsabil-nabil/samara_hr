@@ -13,6 +13,8 @@ use App\Http\Controllers\PenaltyController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TrainingController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LeaveBalanceAdjustmentController;
+use App\Http\Controllers\OfficialHolidayController;
 
 Route::middleware('guest')->group(function (): void {
     Route::get('/login', [LoginController::class, 'show'])->name('login');
@@ -31,6 +33,8 @@ Route::middleware('auth')->group(function (): void {
 
     Route::resource('employees', EmployeeController::class)->except('show');
     Route::resource('leaves', LeaveRequestController::class)->except('show');
+    Route::resource('official-holidays', OfficialHolidayController::class)->except('show');
+    Route::resource('leave-balance-adjustments', LeaveBalanceAdjustmentController::class)->except('show');
     Route::resource('loans', LoanController::class)->except('show');
     Route::resource('documents', OfficialDocumentController::class)->except('show');
     Route::resource('penalties', PenaltyController::class)->except('show');

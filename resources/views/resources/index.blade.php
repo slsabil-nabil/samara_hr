@@ -17,6 +17,16 @@
                 </a>
             @endif
 
+            @if ($routeName === 'leaves')
+                <a class="btn btn-light" href="{{ route('official-holidays.index') }}">
+                    الإجازات الرسمية
+                </a>
+
+                <a class="btn btn-light" href="{{ route('leave-balance-adjustments.index') }}">
+                    تعديل الرصيد
+                </a>
+            @endif
+
             <a class="btn btn-primary" href="{{ route($routeName . '.create') }}">
                 + إضافة جديد
             </a>
@@ -53,13 +63,18 @@
                                 @php
                                     $value = data_get($record, $column['key']);
                                     $format = $column['format'] ?? 'text';
+                                    $options = $column['options'] ?? null;
                                 @endphp
 
                                 <td>
-                                    @if ($format === 'money')
+                                    @if (is_array($options))
+                                        {{ $value !== null && $value !== '' ? $options[(string) $value] ?? $value : '-' }}
+                                    @elseif ($format === 'money')
                                         {{ $value !== null && $value !== '' ? money_kwd($value) : '-' }}
                                     @elseif($format === 'date')
                                         {{ $value ? \Illuminate\Support\Carbon::parse($value)->format('Y-m-d') : '-' }}
+                                    @elseif($format === 'days')
+                                        {{ days_value($value) }}
                                     @elseif($format === 'status')
                                         <span class="badge">{{ status_badge($value) }}</span>
                                     @else
@@ -73,15 +88,17 @@
                                     تعديل
                                 </a>
 
-                                <form method="POST" action="{{ route($routeName . '.destroy', $record) }}"
-                                    onsubmit="return confirm('هل تريد حذف السجل؟')">
-                                    @csrf
-                                    @method('DELETE')
+                                @if ($routeName !== 'leaves')
+                                    <form method="POST" action="{{ route($routeName . '.destroy', $record) }}"
+                                        onsubmit="return confirm('هل تريد حذف السجل؟')">
+                                        @csrf
+                                        @method('DELETE')
 
-                                    <button class="btn btn-sm btn-danger" type="submit">
-                                        حذف
-                                    </button>
-                                </form>
+                                        <button class="btn btn-sm btn-danger" type="submit">
+                                            حذف
+                                        </button>
+                                    </form>
+                                @endif
                             </td>
                         </tr>
                     @empty

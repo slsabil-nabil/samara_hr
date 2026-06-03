@@ -31,15 +31,15 @@ class PayrollService
                 return (float) $row->overtime_hours * $hourlyRate * $multiplier;
             });
 
-            $leaveDays = LeaveRequest::where('employee_id', $employee->id)
+            $leaveDeductionDays = LeaveRequest::where('employee_id', $employee->id)
                 ->where('status', 'approved')
-                ->where('paid', false)
                 ->where(function ($query) use ($start, $end) {
                     $query->whereBetween('start_date', [$start, $end])
                         ->orWhereBetween('end_date', [$start, $end]);
                 })
-                ->sum('days');
-            $leaveDeduction = $leaveDays * $dailyRate;
+                ->sum('leave_deduction_days');
+
+            $leaveDeduction = (float) $leaveDeductionDays * $dailyRate;
 
             $penaltyDeduction = Penalty::where('employee_id', $employee->id)
                 ->whereBetween('date', [$start, $end])
@@ -49,7 +49,7 @@ class PayrollService
                 ->where('status', 'active')
                 ->whereDate('starts_on', '<=', $end)
                 ->get()
-                ->sum(fn (Loan $loan) => min((float) $loan->monthly_installment, $loan->remaining_amount));
+                ->sum(fn(Loan $loan) => min((float) $loan->monthly_installment, $loan->remaining_amount));
 
             $gross = $base + $overtimeAmount;
             $net = max(0, $gross - $leaveDeduction - $penaltyDeduction - $loanDeduction);

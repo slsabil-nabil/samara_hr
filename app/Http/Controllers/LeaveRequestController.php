@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\LeaveRequest;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use App\Services\LeavePolicyService;
+use Illuminate\Http\RedirectResponse;
 
 class LeaveRequestController extends SimpleResourceController
 {
@@ -16,10 +17,25 @@ class LeaveRequestController extends SimpleResourceController
 
     protected array $columns = [
         ['key' => 'employee.name', 'label' => 'الموظف'],
-        ['key' => 'type', 'label' => 'النوع'],
+        [
+            'key' => 'type',
+            'label' => 'النوع',
+            'options' => [
+                'annual' => 'سنوية',
+                'unpaid' => 'بدون أجر',
+                'sick' => 'مرضية',
+                'hajj' => 'حج',
+                'maternity' => 'وضع',
+                'other' => 'أخرى',
+            ]
+        ],
         ['key' => 'start_date', 'label' => 'من', 'format' => 'date'],
         ['key' => 'end_date', 'label' => 'إلى', 'format' => 'date'],
-        ['key' => 'days', 'label' => 'الأيام'],
+        ['key' => 'days', 'label' => 'إجمالي الأيام', 'format' => 'days'],
+        ['key' => 'official_holiday_days', 'label' => 'رسمية', 'format' => 'days'],
+        ['key' => 'deducted_days', 'label' => 'المخصوم من الرصيد', 'format' => 'days'],
+        ['key' => 'leave_deduction_days', 'label' => 'أيام خصم الراتب', 'format' => 'days'],
+        ['key' => 'balance_after', 'label' => 'الرصيد بعد الإجازة', 'format' => 'days'],
         ['key' => 'status', 'label' => 'الحالة', 'format' => 'status'],
     ];
 
@@ -35,8 +51,15 @@ class LeaveRequestController extends SimpleResourceController
 
     protected function mutateData(array $data, ?Model $record): array
     {
-        $data['paid'] = (bool) $data['paid'];
-        $data['days'] = Carbon::parse($data['start_date'])->diffInDays(Carbon::parse($data['end_date'])) + 1;
-        return $data;
+        return app(LeavePolicyService::class)->calculate(
+            $data,
+            $record instanceof LeaveRequest ? $record : null
+        );
+    }
+    public function destroy(int|string $id): RedirectResponse
+    {
+        return redirect()
+            ->route($this->routeName . '.index')
+            ->with('success', 'لا يمكن حذف طلبات الإجازات بعد إضافتها. يمكن تعديل الحالة إلى مرفوض بدلاً من الحذف.');
     }
 }
